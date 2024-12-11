@@ -35,7 +35,7 @@ public class SignupController {
         studentRepository.save(student);
 
         // Redirect to manageUsers page (after successful signup)
-        return "redirect:/manageUsers"; // Redirect to the manageUsers page
+        return "redirect:/signupSuccess"; // Redirect to the manageUsers page
     }
 
     // Display manage users page with the list of students
