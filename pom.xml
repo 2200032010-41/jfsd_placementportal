@@ -76,11 +76,7 @@
         </dependency>
 
         <!-- Custom dependency (e.g., BookMvcCrud) -->
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>BookMvcCrud</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+       
     </dependencies>
 
     <build>
