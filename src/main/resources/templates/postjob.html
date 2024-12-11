@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Post a Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           background-image: url('/images/background2.jpeg'); /* Path to background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: rgba(76, 175, 80, 0.9); /* Transparent green */
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        header h1 {
+            margin: 0;
+        }
+        #job-form-container {
+            padding: 2em;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+            border-radius: 8px;
+            margin: 2em auto;
+            width: 50%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            font-weight: bold;
+        }
+        form input, form textarea, form select, form button {
+            width: 100%;
+            padding: 0.5em;
+            margin: 0.5em 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        form button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+        .success-message {
+            color: green;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Post a Job</h1>
+    </header>
+
+    <section id="job-form-container">
+        <h2>Job Posting Form</h2>
+
+        <!-- Display success message if available -->
+        <div th:if="${successMessage}" class="success-message">
+            <p th:text="${successMessage}"></p>
+        </div>
+
+        <form th:action="@{/postJob}" method="post">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" required>
+
+            <label for="description">Job Description:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="eligibility">Eligibility:</label>
+            <input type="text" id="eligibility" name="eligibility" required>
+
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location">
+
+            <label for="salary">Salary Range:</label>
+            <input type="text" id="salary" name="salary">
+
+            <!-- Removed the Job Type field -->
+
+            <button type="submit">Post Job</button>
+        </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Profile</title>
+    <style>
+        body {
+        background-image: url('/images/background2.jpeg');
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Profile</h1>
+        <form action="/profile/create" method="post">
+            <label for="fullName">F Name:</label>
+            <input type="text" name="fullName" required><br>
+
+            <label for="middleName">Middle Name:</label>
+            <input type="text" name="middleName"><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" required><br>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" required><br>
+
+            <label for="mobile">Mobile:</label>
+            <input type="text" name="mobile" required><br>
+
+            <label for="university">University:</label>
+            <input type="text" name="university" required><br>
+
+            <label for="role">Role:</label>
+            <select name="role">
+                <option value="Student">Student</option>
+                <option value="Admin">Admin</option>
+                <option value="Employee">Employee</option>
+            </select><br>
+
+            <button type="submit">Save</button>
+            <div class="ViewProfile-link">
+            <p>Already have an aProfile? <a href="/profile" class="text-light">View Profile here</a></p>
+        </div>
+        </form>
+
+    </div>
+</body>
+</html>

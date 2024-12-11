@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/images/background2.jpeg');  /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            color: #fff; /* Change text color to white for better contrast */
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background for form */
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 100px; /* Space from top */
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .error-message, .success-message {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Signup</h2>
+        <form action="/signup" method="post">
+            <div class="mb-3">
+                <label for="role" class="form-label">Role:</label>
+                <select id="role" name="role" class="form-select" required>
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="Student">Student</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Employee">Employee</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="age" class="form-label">Age:</label>
+                <input type="number" id="age" name="age" class="form-control" min="1" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+        </form>
+
+        <!-- Display error message -->
+        <div th:if="${error}" class="error-message" style="color:red;">[[${error}]]</div>
+        
+        <!-- Display success message -->
+        <div th:if="${message}" class="success-message" style="color:lightgreen;">[[${message}]]</div>
+
+        <!-- Login link -->
+        <div class="login-link">
+            <p>Already have an account? <a href="/login" class="text-light">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

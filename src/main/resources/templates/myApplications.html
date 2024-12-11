@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Job Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/images/background.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: rgba(76, 175, 80, 0.9);
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 2em;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            margin: 2em auto;
+            width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            padding: 1em;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no-applications {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Job Applications</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/studentDashboard}">Dashboard</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Application List</h2>
+
+        <!-- Display success or error messages -->
+        <div th:if="${success}" class="success-message">
+            <p th:text="${success}"></p>
+        </div>
+        <div th:if="${error}" class="error-message">
+            <p th:text="${error}"></p>
+        </div>
+
+        <!-- Display applications if available -->
+        <div th:if="${applications != null && !#lists.isEmpty(applications)}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Company</th>
+                        <th>Status</th>
+                        <th>Date Applied</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="application : ${applications}">
+                        <td th:text="${application.jobTitle}"></td>
+                        <td th:text="${application.companyName}"></td>
+                        <td th:text="${application.status}"></td>
+                        <td th:text="${application.applicationDate}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- If no applications, show a message -->
+        <div th:if="${applications == null || #lists.isEmpty(applications)}" class="no-applications">
+            <p>You have not applied for any jobs yet.</p>
+        </div>
+    </section>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

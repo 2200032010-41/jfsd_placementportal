@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Profile</title>
+    <style>
+        body {
+        background-image: url('/images/background2.jpeg');
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .profile-info {
+            margin-bottom: 15px;
+        }
+
+        .profile-info label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .profile-info p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            color: #4CAF50;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Information</h1>
+        <div class="profile-info">
+            <label>Full Name:</label>
+            <p>${profile.fullName} ${profile.middleName} ${profile.lastName}</p>
+        </div>
+        <div class="profile-info">
+            <label>Age:</label>
+            <p>${profile.age}</p>
+        </div>
+        <div class="profile-info">
+            <label>Mobile:</label>
+            <p>${profile.mobile}</p>
+        </div>
+        <div class="profile-info">
+            <label>University:</label>
+            <p>${profile.university}</p>
+        </div>
+        <div class="profile-info">
+            <label>Role:</label>
+            <p>${profile.role}</p>
+        </div>
+
+        <a href="/profile/update">Update Profile</a>
+    </div>
+</body>
+</html>

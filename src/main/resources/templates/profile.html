@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <style>
+        body {
+        background-image: url('/images/background2.jpeg');
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .profile-container h2 {
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            color: green;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>Your Profile</h2>
+        <form th:action="@{/profile/update}" method="post" th:object="${profile}">
+            <input type="text" th:field="*{fullName}" placeholder="Full Name" required>
+            <input type="number" th:field="*{age}" placeholder="Age" required>
+            <input type="text" th:field="*{mobileNumber}" placeholder="Mobile Number" required>
+            <input type="text" th:field="*{address}" placeholder="Address" required>
+            <input type="text" th:field="*{fatherName}" placeholder="Father's Name" required>
+            <input type="text" th:field="*{motherName}" placeholder="Mother's Name" required>
+            <button type="submit">Save Profile</button>
+        </form>
+        <div th:if="${message}" class="message" th:text="${message}"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Review Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+           background-image: url('/images/background2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background-color: rgba(76, 175, 80, 0.9);
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 2em;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            margin: 2em auto;
+            width: 80%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .no-applications {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Review Applications</h1>
+        <nav>
+            <ul>
+                <li><a th:href="@{/employerDashboard}">Dashboard</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Applications to Review</h2>
+        <div class="no-applications">
+            <p>No jobs to review at the moment.</p>
+        </div>
+    </section>
+
+    <script src="/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Tracking</title>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJrKmpWw+7oF6+zpX9jlXrSx12Lbb5m9A6VpgI0X2s2g1glYsh7v9kZ9xHAP" crossorigin="anonymous">
+    <style>
+        body {
+        background-image: url('/images/background2.jpeg');
+            background-color: #f4f7f6;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .status-button {
+            width: 120px;
+            margin: 5px;
+        }
+        .tracking-table {
+            margin-top: 30px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="text-center mb-4">Application Tracking for Job ID: {{jobApplication.jobId}}</h2>
+    
+    <!-- Display Success or Error Message -->
+    <div class="alert alert-success" th:if="${success}" role="alert">
+        Status updated successfully!
+    </div>
+    <div class="alert alert-danger" th:if="${error}" role="alert">
+        Error occurred while updating the status.
+    </div>
+
+    <!-- Job Application Status -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>Current Status: <span class="text-uppercase" th:text="${jobApplication.status}">Processing</span></h4>
+        </div>
+        <div class="card-body">
+            <p><strong>Job ID:</strong> <span th:text="${jobApplication.jobId}"></span></p>
+            <p><strong>Application Date:</strong> <span th:text="${jobApplication.applicationDate}"></span></p>
+        </div>
+    </div>
+
+    <!-- Action Buttons for Changing Status -->
+    <div class="text-center">
+        <form th:action="@{/updateApplicationStatus/{applicationId}(applicationId=${jobApplication.id})}" method="post">
+            <button type="submit" name="status" value="Shortlisted" class="btn btn-success status-button">Shortlisted</button>
+            <button type="submit" name="status" value="Processing" class="btn btn-warning status-button">Processing</button>
+            <button type="submit" name="status" value="Rejected" class="btn btn-danger status-button">Rejected</button>
+        </form>
+    </div>
+
+    <!-- Tracking Updates Table -->
+    <h3 class="text-center mt-5">Tracking Updates</h3>
+    <table class="table table-striped tracking-table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Comments</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="tracking : ${trackingUpdates}">
+                <td th:text="${tracking.updateDate}"></td>
+                <td th:text="${tracking.status}"></td>
+                <td th:text="${tracking.comments}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4z8qjZP0o9RUfI1gN+gFf5n3kX5LF4Xo" crossorigin="anonymous"></script>
+</body>
+</html>
